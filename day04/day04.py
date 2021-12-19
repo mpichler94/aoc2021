@@ -5,6 +5,8 @@ import numpy as np
 def read_input():
     f = open('day04/input.txt')
     data = f.read().splitlines()
+    f.close()
+
     numbers = data[0]
     boards = []
 

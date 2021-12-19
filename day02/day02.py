@@ -1,9 +1,7 @@
-import numpy as np
-
-
 def read_input():
     f = open('day02/input.txt')
     lines = f.readlines()
+    f.close()
 
     cmds = []
     nums = []
@@ -17,44 +15,44 @@ def read_input():
 
 
 def parse_input(commands, numbers):
-    vert = 0
-    hor = 0
+    depth = 0
+    pos = 0
     for cmd, num in zip(commands, numbers):
         if cmd == 'forward':
-            hor += int(num)
+            pos += int(num)
         elif cmd == 'down':
-            vert += int(num)
+            depth += int(num)
         else:
-            vert -= int(num)
+            depth -= int(num)
 
-    return hor, vert
+    return pos, depth
 
 
 def parse_manual(commands, numbers):
     aim = 0
-    hor = 0
+    pos = 0
     depth = 0
 
     for cmd, num in zip(commands, numbers):
         if cmd == 'forward':
-            hor += int(num)
+            pos += int(num)
             depth += aim * int(num)
         elif cmd == 'down':
             aim += int(num)
         else:
             aim -= int(num)
-    return hor, depth
+    return pos, depth
 
 
 def main():
     commands, numbers = read_input()
-    horizontal, vertikal = parse_input(commands, numbers)
+    pos, depth = parse_input(commands, numbers)
 
-    print(f'x: {horizontal} y: {vertikal} product: {horizontal * vertikal}')
+    print(f'x: {pos} y: {depth} product: {pos * depth}')
 
-    horizontal, vertikal = parse_manual(commands, numbers)
+    pos, depth = parse_manual(commands, numbers)
 
-    print(f'x: {horizontal} y: {vertikal} product: {horizontal * vertikal}')
+    print(f'x: {pos} y: {depth} product: {pos * depth}')
 
 
 if __name__ == '__main__':

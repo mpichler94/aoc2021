@@ -1,13 +1,11 @@
-import numpy as np
-
-
 def read_input():
     f = open('day03/input.txt')
     data = f.read().splitlines()
+    f.close()
     return data
 
 
-def get_most_common(data, keep):
+def get_most_common(data):
     num_bits = len(data[0])
     one_bits = [0] * num_bits
     for number in data:
@@ -31,7 +29,7 @@ def get_most_common(data, keep):
 
 def get_most_common_numbers(data, i):
     ret = []
-    most_common = get_most_common(data, '1')
+    most_common = get_most_common(data)
     for number in data:
         if number[i] == most_common[i]:
             ret.append(number)
@@ -41,7 +39,7 @@ def get_most_common_numbers(data, i):
 
 def get_least_common_numbers(data, i):
     ret = []
-    most_common = get_most_common(data, '0')
+    most_common = get_most_common(data)
     for number in data:
         if number[i] != most_common[i]:
             ret.append(number)
@@ -88,7 +86,7 @@ def invert_bits(number):
 
 def main():
     data = read_input()
-    most_common = get_most_common(data, '1')
+    most_common = get_most_common(data)
     gamma = bin_to_dec(most_common)
     epsilon = bin_to_dec(invert_bits(most_common))
 
