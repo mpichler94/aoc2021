@@ -18,7 +18,6 @@ def read_input():
 
 
 def part_a(template, rules):
-
     counter = Counter(process_polymer(template, rules, 10))
 
     min_quantity = get_min_quantity(counter)
